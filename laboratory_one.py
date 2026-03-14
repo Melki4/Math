@@ -9,6 +9,11 @@ import scipy
 from scipy.integrate import quad
 import matplotlib.pyplot as plt
 
+import warnings
+
+# Ignore all warnings
+warnings.filterwarnings("ignore")
+
 # ----------------------------------------------------------------------
 # Задание 1. Создание матриц с помощью NumPy
 # ----------------------------------------------------------------------
@@ -154,11 +159,10 @@ plt.plot(X, C, color="blue", linewidth=2.5, linestyle="-", label="sin(x + pi/3)"
 plt.plot(X, L, color="red", linewidth=2.5, linestyle="-", label="2*x")
 
 plt.xlim(X.min() * 1.1, X.max() * 1.1)
-plt.xticks([-2*np.pi, -3*np.pi/2, -np.pi, -np.pi/2, 0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi],
-           [r'$-2\pi$', r'$-3\pi/2$', r'$-\pi$', r'$-\pi/2$', r'$0$', r'$+\pi/2$', r'$+\pi$', r'$+3\pi/2$', r'$+2\pi$'])
+plt.xticks([-2*np.pi, -3*np.pi/2, -np.pi, -np.pi/2, 0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi])
 
 plt.ylim(C.min() * 1.1, C.max() * 1.1)
-plt.yticks([-2, -1, 1, 2], [r'$-2$', r'$-1$', r'$+1$', r'$+2$'])
+plt.yticks([-2, -1, 1, 2])
 
 from scipy.optimize import fsolve
 x_cross = fsolve(lambda x: np.sin(x + np.pi/3) - 2*x, 0)[0]
@@ -167,5 +171,5 @@ y_cross = 2 * x_cross
 ax.scatter(x=x_cross, y=y_cross, c='orange', s=50, zorder=5,)
 
 plt.legend(loc='upper left', frameon=False)
-plt.grid()
+plt.grid(True)
 plt.show()
